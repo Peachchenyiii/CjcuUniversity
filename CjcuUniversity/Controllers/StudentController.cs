@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using CjcuUniversity.DAL;
 using CjcuUniversity.Models;
+using PagedList;
 
 namespace CjcuUniversity.Controllers
 {
@@ -16,10 +17,25 @@ namespace CjcuUniversity.Controllers
         private SchoolContext db = new SchoolContext();
 
         // GET: Student
-        public ViewResult Index(string sortOrder, string searchString)
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            /* 記得目前的排序 */
+            ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            /* 類似ifelse的概念，對則執行第一個，錯則執行第二個 */
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
             var students = from s in db.Students
                            select s;
 
@@ -44,7 +60,10 @@ namespace CjcuUniversity.Controllers
                     students = students.OrderBy(s => s.LastName);
                     break;
             }
-            return View(students.ToList());
+            //return View(students.ToList());
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(students.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Student/Details/5
