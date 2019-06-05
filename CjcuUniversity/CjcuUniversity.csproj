@@ -149,9 +149,20 @@
     <Compile Include="Migrations\201905290721117_InitialCreate.Designer.cs">
       <DependentUpon>201905290721117_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906050708538_MaxLengthOnNames.cs" />
+    <Compile Include="Migrations\201906050708538_MaxLengthOnNames.Designer.cs">
+      <DependentUpon>201906050708538_MaxLengthOnNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906050736552_ComplexDataModel.cs" />
+    <Compile Include="Migrations\201906050736552_ComplexDataModel.Designer.cs">
+      <DependentUpon>201906050736552_ComplexDataModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Enrollment.cs" />
+    <Compile Include="Models\Instructor.cs" />
+    <Compile Include="Models\OfficeAssignment.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\EnrollmentDateGroup.cs" />
@@ -218,6 +229,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905290721117_InitialCreate.resx">
       <DependentUpon>201905290721117_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906050708538_MaxLengthOnNames.resx">
+      <DependentUpon>201906050708538_MaxLengthOnNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906050736552_ComplexDataModel.resx">
+      <DependentUpon>201906050736552_ComplexDataModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
